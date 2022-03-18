@@ -12,7 +12,7 @@ export class InvitationPageComponent implements OnInit {
   companyTitle = 'IT COMPANY';
   companyInfo = 'Implementing your IT solutions';
   inviteText =
-    'We will be more than happy to have you with us for this very special moment!invitation-page';
+    'We will be more than happy to have you with us for this very special moment!';
   day = 'Wednesday';
   month = 'December';
   time = '19h to 23h';

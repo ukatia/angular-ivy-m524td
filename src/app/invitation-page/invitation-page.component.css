@@ -1,11 +1,11 @@
 .container {
-  left: 522px;
-  position: absolute;
-  width: 947px;
-  height: 999px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 54%;
   background: #ffffff;
   border: 1px solid #000000;
   border-radius: 0px;
+  padding: 0px 16px 36px;
 }
 
 .title {
@@ -38,6 +38,7 @@
   text-align: center;
   padding: 5px;
   margin-top: -20px;
+  margin-bottom: 24px;
 }
 
 .invite-text {
@@ -46,15 +47,20 @@
   color: #616161;
   font-family: Raleway;
   font-size: 36px;
+  font-weight: bold;
+  font-style: italic;
   text-align: center;
   padding: 5px;
 }
 
 .invite {
   display: flex;
+  justify-content: center;
   align-items: center;
   color: #020056;
   font-family: 'Source Sans Pro';
+  font-weight: bold;
+  margin: 24px 0;
 }
 
 .date {
@@ -72,7 +78,7 @@
 .v-line {
   height: 138px;
   border-left: 6px solid #0b71dd;
-  margin: 0 8px;
+  margin: 0 16px;
 }
 
 .month {
