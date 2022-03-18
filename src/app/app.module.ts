@@ -6,9 +6,15 @@ import { HelloComponent } from './hello.component';
 import { InvitationPageComponent } from './invitation-page/invitation-page.component';
 import { AcceptRefuseDialogComponent } from './accept-refuse-dialog/accept-refuse-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  imports: [BrowserModule, FormsModule, MatDialogModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    FormsModule,
+    MatDialogModule,
+  ],
   declarations: [
     AppComponent,
     HelloComponent,
