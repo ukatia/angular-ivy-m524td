@@ -5,3 +5,9 @@
 @import url('https://fonts.googleapis.com/css?family=Oxygen');
 @import url('https://fonts.googleapis.com/css?family=Raleway');
 @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');
+
+.app-dialog-container .mat-dialog-container {
+  padding: 0px;
+  width: 60vw;
+  height: 80vh;
+}

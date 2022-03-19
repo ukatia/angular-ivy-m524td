@@ -1,12 +1,125 @@
-<form>
-  <div class="invite-content">
-    Dear invited, We will appreciate if you confirm your presence
+<h4 mat-dialog-title>
+  <span class="title-text">Are you coming? Give us more details.</span>
+  <span class="fx-spacer"></span>
+  <button mat-icon-button class="close-button" (click)="close()">
+    <mat-icon mat-list-icon>close</mat-icon>
+  </button>
+</h4>
+
+<mat-dialog-content>
+  <div class="content">
+    <form [formGroup]="form">
+      <div class="invite-content">
+        Dear invited,<br />
+        We will appreciate if you confirm your presence
+      </div>
+      <p>
+        We are very happy that you have the intention to come! Please fill the
+        form below in order to us plan the best way to organize our event.
+      </p>
+      <div class="input-field-container">
+        <div class="form-field">
+          <mat-icon class="account-icon">person</mat-icon>
+          <input
+            matInput
+            formControlName="name"
+            class="input-user"
+            placeholder="Name"
+          />
+          <mat-error *ngIf="hasError('name', 'required')"
+            >Name is required</mat-error
+          >
+        </div>
+
+        <div class="form-field">
+          <mat-icon class="account-icon">phone</mat-icon>
+          <input
+            matInput
+            formControlName="phone"
+            class="input-user"
+            placeholder="Phone Number"
+          />
+        </div>
+
+        <div class="form-field">
+          <mat-icon class="account-icon">email</mat-icon>
+          <input
+            matInput
+            formControlName="email"
+            class="input-user"
+            placeholder="Email"
+          />
+        </div>
+      </div>
+
+      <div class="user-details">
+        <div class="control-container">
+          <label class="label-check">Gender</label>
+          <mat-radio-group
+            aria-label="Select a gender"
+            formControlName="gender"
+          >
+            <mat-radio-button value="male">Male</mat-radio-button>
+            <mat-radio-button value="female">Female</mat-radio-button>
+          </mat-radio-group>
+        </div>
+        <div class="control-container">
+          <label class="label-check">Who is coming with you?</label>
+          <mat-label>Please select</mat-label>
+          <mat-select
+            (selectionChange)="selectIfColleagues($event)"
+            formControlName="whoIsComing"
+          >
+            <mat-option
+              *ngFor="let option of numberOptions"
+              [value]="option.value"
+            >
+              {{ option.display }}
+            </mat-option>
+          </mat-select>
+          <input
+            *ngIf="bringColleagues"
+            class="input-number"
+            formControlName="noOfColleagues"
+            placeholder="How many colleagues?"
+            type="number"
+            step="1"
+            matInput
+          />
+        </div>
+      </div>
+
+      <!--Count on invited-->
+      <div class="count">May we count on you?</div>
+
+      <div class="btn-container">
+        <mat-button-toggle-group
+          #group="matButtonToggleGroup"
+          appearance="legacy"
+          name="accept"
+          aria-label="count on you"
+          class="button-container"
+          (change)="onSelectionChanged(group.value)"
+        >
+          <mat-button-toggle value="yes" class="btn-yes"
+            ><mat-icon>thumb_up</mat-icon>YES</mat-button-toggle
+          >
+          <mat-button-toggle value="no" class="btn-no"
+            ><mat-icon>thumb_down</mat-icon>NO</mat-button-toggle
+          >
+        </mat-button-toggle-group>
+      </div>
+
+      <div class="user-details">
+        <button
+          mat-button
+          type="submit"
+          class="btn-submit"
+          (click)="onSubmit()"
+        >
+          Submit Response
+        </button>
+      </div>
+    </form>
   </div>
-  <div>May we count on you?</div>
-  <div>
-    We are very happy that you have the intention to come! Please fill the form
-    below in order to us plan the best way to organize our event.
-  </div>
-  <div></div>
-  <button type="submit">Submit Response</button>
-</form>
+</mat-dialog-content>

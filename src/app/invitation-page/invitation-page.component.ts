@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AcceptRefuseDialogComponent } from '../accept-refuse-dialog/accept-refuse-dialog.component';
 
 @Component({
@@ -22,8 +22,12 @@ export class InvitationPageComponent implements OnInit {
   ngOnInit() {}
 
   onClick() {
-    const dialogRef = this.dialog.open(AcceptRefuseDialogComponent, {
-      width: '650px',
-    });
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.autoFocus = true;
+    dialogConfig.hasBackdrop = true;
+    dialogConfig.panelClass = 'app-dialog-container';
+
+    this.dialog.open(AcceptRefuseDialogComponent, dialogConfig);
   }
 }
