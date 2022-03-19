@@ -15,6 +15,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { InvitationService } from './invitation.service';
+import { RouterModule } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   imports: [
@@ -29,7 +32,10 @@ import { InvitationService } from './invitation.service';
     MatRadioModule,
     MatSelectModule,
     MatToolbarModule,
+    MatButtonModule,
     MatButtonToggleModule,
+    RouterModule,
+    RouterTestingModule,
   ],
   declarations: [
     AppComponent,

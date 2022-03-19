@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { InvitationService } from '../invitation.service';
 
 @Component({
@@ -18,10 +18,16 @@ export class AcceptRefuseDialogComponent implements OnInit {
   bringColleagues = false;
   constructor(
     private dialogRef: MatDialogRef<AcceptRefuseDialogComponent>,
-    private invitationService: InvitationService
+    private invitationService: InvitationService,
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
   ngOnInit() {
+    if (this.data) {
+      this.invitationService.getInvitation(this.data).subscribe((res) => {
+        // populate for
+      });
+    }
     this.form = new FormGroup({
       name: new FormControl('', [Validators.required]),
       phone: new FormControl('', []),
