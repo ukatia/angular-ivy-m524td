@@ -14,7 +14,7 @@ export class AcceptRefuseDialogComponent implements OnInit {
     { display: "I'm taking some colleagues", value: 1 },
   ];
   public form: FormGroup;
-  hasAccepted = null;
+  submitClicked = false;
   bringColleagues = false;
   constructor(
     private dialogRef: MatDialogRef<AcceptRefuseDialogComponent>,
@@ -23,15 +23,13 @@ export class AcceptRefuseDialogComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.maxLength(80)]),
-      phone: new FormControl('', [
-        Validators.required,
-        Validators.maxLength(12),
-      ]),
-      email: new FormControl('', [Validators.required, Validators.email]),
+      name: new FormControl('', [Validators.required]),
+      phone: new FormControl('', []),
+      email: new FormControl(''),
       gender: new FormControl(''),
       whoIsComing: new FormControl(''),
       noOfColleagues: new FormControl(''),
+      isComing: new FormControl('', [Validators.required]),
     });
   }
 
@@ -40,14 +38,34 @@ export class AcceptRefuseDialogComponent implements OnInit {
   onClickNo() {}
 
   public hasError = (controlName: string, errorName: string) => {
+    if (!this.submitClicked) {
+      return false;
+    }
     return this.form.controls[controlName].hasError(errorName);
   };
 
   onSelectionChanged(event) {
-    this.hasAccepted = event === 'yes' ? true : false;
-  }
+    const phone = this.form.get('phone');
+    const email = this.form.get('email');
+    const gender = this.form.get('gender');
+    const whoIsComing = this.form.get('whoIsComing');
 
-  requiredAccountDetailsValidation() {}
+    if (event === 'yes') {
+      phone.setValidators([Validators.required]);
+      email.setValidators([Validators.required]);
+      gender.setValidators([Validators.required]);
+      whoIsComing.setValidators([Validators.required]);
+    } else {
+      phone.setValidators(null);
+      email.setValidators(null);
+      gender.setValidators(null);
+      whoIsComing.setValidators(null);
+    }
+    phone.updateValueAndValidity();
+    email.updateValueAndValidity();
+    gender.updateValueAndValidity();
+    whoIsComing.updateValueAndValidity();
+  }
 
   selectIfColleagues(event) {
     if (event.value === 1) {
@@ -58,10 +76,13 @@ export class AcceptRefuseDialogComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.form.value);
-    this.invitationService.sendInvitation(this.form.value).subscribe((res) => {
-      console.log(res);
-    });
+    this.submitClicked = true;
+    if (!this.form.valid) {
+      return;
+    }
+    this.invitationService
+      .sendInvitation(this.form.value)
+      .subscribe((res) => {});
   }
 
   close() {

@@ -117,9 +117,20 @@ h2 {
 }
 
 .form-field {
-  margin-bottom: 34px;
   width: 80%;
   display: flex;
+}
+
+.form-field-value {
+  margin-bottom: 34px;
+}
+
+.error {
+  margin-left: 30px;
+  color: #f44336;
+  font-family: 'Source Sans Pro';
+  font-size: 14px;
+  text-align: left;
 }
 
 .btn-yes {
@@ -200,6 +211,10 @@ input {
   justify-content: center;
 }
 
+.radio-group {
+  margin-bottom: 16px;
+}
+
 .btn-submit {
   width: 202px;
   height: 40px;
@@ -211,7 +226,7 @@ input {
   text-decoration: none;
   text-align: center;
   background: #ffffff;
-  border: none;
+  border: 1px solid #d3d3d3;
   border-radius: 0px;
   box-shadow: 0 5px 5px -5px #333;
   cursor: pointer;

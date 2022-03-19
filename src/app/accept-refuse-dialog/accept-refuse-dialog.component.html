@@ -18,37 +18,49 @@
         form below in order to us plan the best way to organize our event.
       </p>
       <div class="input-field-container">
-        <div class="form-field">
-          <mat-icon class="account-icon">person</mat-icon>
-          <input
-            matInput
-            formControlName="name"
-            class="input-user"
-            placeholder="Name"
-          />
-          <mat-error *ngIf="hasError('name', 'required')"
+        <div class="form-field-value">
+          <div class="form-field">
+            <mat-icon class="account-icon">person</mat-icon>
+            <input
+              matInput
+              formControlName="name"
+              class="input-user"
+              placeholder="Name"
+            />
+          </div>
+          <mat-error class="error" *ngIf="hasError('name', 'required')"
             >Name is required</mat-error
           >
         </div>
 
-        <div class="form-field">
-          <mat-icon class="account-icon">phone</mat-icon>
-          <input
-            matInput
-            formControlName="phone"
-            class="input-user"
-            placeholder="Phone Number"
-          />
+        <div class="form-field-value">
+          <div class="form-field">
+            <mat-icon class="account-icon">phone</mat-icon>
+            <input
+              matInput
+              formControlName="phone"
+              class="input-user"
+              placeholder="Phone Number"
+            />
+          </div>
+          <mat-error class="error" *ngIf="hasError('phone', 'required')">
+            How may we reach you?
+          </mat-error>
         </div>
 
-        <div class="form-field">
-          <mat-icon class="account-icon">email</mat-icon>
-          <input
-            matInput
-            formControlName="email"
-            class="input-user"
-            placeholder="Email"
-          />
+        <div class="form-field-value">
+          <div class="form-field">
+            <mat-icon class="account-icon">email</mat-icon>
+            <input
+              matInput
+              formControlName="email"
+              class="input-user"
+              placeholder="Email"
+            />
+          </div>
+          <mat-error class="error" *ngIf="hasError('email', 'required')">
+            What is you email address?
+          </mat-error>
         </div>
       </div>
 
@@ -58,10 +70,14 @@
           <mat-radio-group
             aria-label="Select a gender"
             formControlName="gender"
+            class="radio-group"
           >
             <mat-radio-button value="male">Male</mat-radio-button>
             <mat-radio-button value="female">Female</mat-radio-button>
           </mat-radio-group>
+          <mat-error *ngIf="hasError('gender', 'required')"
+            >What is your gender?</mat-error
+          >
         </div>
         <div class="control-container">
           <label class="label-check">Who is coming with you?</label>
@@ -77,6 +93,9 @@
               {{ option.display }}
             </mat-option>
           </mat-select>
+          <mat-error *ngIf="hasError('whoIsComing', 'required')"
+            >Are you bringing someone with you?</mat-error
+          >
           <input
             *ngIf="bringColleagues"
             class="input-number"
@@ -99,6 +118,7 @@
           name="accept"
           aria-label="count on you"
           class="button-container"
+          formControlName="isComing"
           (change)="onSelectionChanged(group.value)"
         >
           <mat-button-toggle value="yes" class="btn-yes"
@@ -108,6 +128,11 @@
             ><mat-icon>thumb_down</mat-icon>NO</mat-button-toggle
           >
         </mat-button-toggle-group>
+      </div>
+      <div class="btn-container">
+        <mat-error *ngIf="hasError('isComing', 'required')"
+          >Are you coming or not?</mat-error
+        >
       </div>
 
       <div class="user-details">

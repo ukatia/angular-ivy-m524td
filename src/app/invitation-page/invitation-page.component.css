@@ -93,7 +93,6 @@
   font-family: 'Source Sans Pro';
   font-size: 36px;
   text-align: left;
-  line-height: 1px;
   padding: 5px;
 }
 
@@ -124,4 +123,23 @@
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   position: relative;
+}
+
+@media (max-width: 767px) {
+  .date-number {
+    font-size: 34px;
+  }
+
+  .invite-text {
+    font-size: 24px;
+  }
+
+  .date {
+    font-size: 18px;
+  }
+
+  .month,
+  .time {
+    font-size: 16px;
+  }
 }
