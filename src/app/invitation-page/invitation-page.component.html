@@ -1,13 +1,14 @@
 <div class="container">
-  <h1 class="title">{{ title }}</h1>
+<h1 class="title">{{ title }}</h1>
 
-  <!-- Company Details -->
-  <div>
-    <img src="/assets/background.jpg" />
-    <div class="company-title">{{ companyTitle }}</div>
-    <div class="company-info">{{ companyInfo }}</div>
-    <!-- Invitation Details -->
-    <div class="invite-text">{{ inviteText }}</div>
+<!-- Company Details -->
+<div>
+  <img src="../../assets/company-logo" alt="Company Logo" />
+  <div class="company-title">{{ companyTitle }}</div>
+  <div class="company-info">{{ companyInfo }}</div>
+  <!-- Invitation Details -->
+  <div class="invite-text">{{ inviteText }}</div>
+  <div class="date-container">
     <div class="invite">
       <span class="date">
         {{ day }}
@@ -20,7 +21,8 @@
       <div class="v-line"></div>
       <span class="time">{{ time }} </span>
     </div>
+    <!--Submit Button-->
+    <button class="btn" (click)="onClick()">ACCEPT / REFUSE</button>
   </div>
-  <!--Submit Button-->
-  <button class="btn" (click)="onClick()">ACCEPT / REFUSE</button>
+</div>
 </div>

@@ -235,3 +235,10 @@ input {
 .mat-button-toggle-checked {
   background-color: #bdbdbd;
 }
+
+@media (max-width: 767px) {
+  .invite-content,
+  .title-text {
+    font-size: 14px;
+  }
+}
